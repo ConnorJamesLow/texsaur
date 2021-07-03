@@ -8,11 +8,15 @@
   "scripts": {
     "dev": "npx tsc -w",
     "build": "npx tsc",
-    "prerelease": "npm run build"
+    "prepare": "npm run build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Connor Low",
+  "license": "MIT",
+  "repository": {
+    "url": " https://github.com/ConnorJamesLow/texsaur",
+    "type": "git"
+  },
   "dependencies": {
     "typescript": "^4.3.5"
   }
