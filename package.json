@@ -1,0 +1,19 @@
+{
+  "name": "texsaur",
+  "version": "0.1.0",
+  "description": "",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "npx tsc -w",
+    "build": "npx tsc",
+    "prerelease": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.3.5"
+  }
+}
