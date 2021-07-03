@@ -1,12 +1,13 @@
 /// <reference path="../JSX.d.ts" />
 
-function jsx(tag: JSX.Tag, properties: RecursivePartial<JSX.IntrinsicElements[typeof tag]> | null, ...children: Node[]): Node
+function jsx<T extends JSX.Tag = JSX.Tag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[typeof tag]> | null, ...children: Node[]): JSX.Element<T>
 function jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: Node[]): Node
 function jsx(tag: JSX.Tag | JSX.Component, properties: object | null, ...children: Node[]) {
     if (typeof tag === 'function') {
         return tag(properties ?? {}, children);
     }
-    const element = document.createElement(tag);
+    type Tag = typeof tag;
+    const element : HTMLElementTagNameMap[Tag] = document.createElement(tag);
 
     let map = (properties ?? {}) as RecursivePartial<JSX.IntrinsicElements[typeof tag]>;
     let prop: keyof JSX.IntrinsicElements[typeof tag];

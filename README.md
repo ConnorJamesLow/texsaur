@@ -1,9 +1,9 @@
 # Texsaur
-A simple jsx to `Node` parser.  
+A simple jsx to DOM `Node` parser.  
 
 
 
-## Example
+## Usage
 To create an element in js, we *could* use `document.createElement`:
 
 ```ts
@@ -22,8 +22,34 @@ const div: HTMLElement = <div class="example" onclick={() => console.log('clicke
 ```
 
 
+### Resuability
+You can create a reusable component by creating a function:
 
-## Installation/Usage
+```tsx
+function Header({ title }: { title: string }) {
+  return <header>
+    <h1>{title}</h1>
+  </header>
+}
+
+document.body.appendChild(
+  <div>
+    <Header title="Hello there" />
+    {/* Same as */}
+    {Header({title: 'Hello there' })}
+  </div>
+)
+```
+
+To work with JSX, the function must implement `Component`:
+
+```ts
+interface Component {
+  (properties?: { [key: string]: any }, children?: Node[]): Node
+}
+```
+
+## Getting Started
 JSX requires a compiler/bundler.  
 
 
@@ -34,9 +60,9 @@ For example, in Vite, add the `esbuild.jsx` property:
 
 ```js
 export default {
-    esbuild: {
-        jsxFactory: 'jsx',
-    }
+  esbuild: {
+    jsxFactory: 'jsx',
+  }
 }
 ```
 
@@ -45,10 +71,10 @@ export default {
 First, configure your tsconfig:
 
 ```jsonc
-  "compilerOptions": {
-    "jsx": "react",
-    "jsxFactory": "jsx", 
-  }
+"compilerOptions": {
+  "jsx": "react",
+  "jsxFactory": "jsx", 
+}
 ```
 
 Then, import _Texsaur_ in any **.tsx** file:

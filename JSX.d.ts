@@ -1,7 +1,7 @@
 /// <reference lib="DOM" />
 
 declare namespace JSX {
-    type Element = Node;
+    type Element<T extends keyof HTMLElementTagNameMap> = HTMLElementTagNameMap[T];
     interface IntrinsicElements extends IntrinsicElementMap { }
 
     type CommonProperties = Partial<{
@@ -20,8 +20,10 @@ declare namespace JSX {
     }
 
     type Tag = keyof JSX.IntrinsicElements
-    type Component = (properties: any, children: any) => Node
-    
+    interface Component {
+        (properties?: { [key: string]: any }, children?: Node[]): Node
+    }
+
     type PropertyValue = number | string | Date | boolean;
 }
 
