@@ -1,6 +1,6 @@
 {
   "name": "texsaur",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "types": "./dist/index.d.ts",
   "type": "module",
