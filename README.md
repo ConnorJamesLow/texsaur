@@ -54,7 +54,7 @@ JSX requires a compiler/bundler.
 
 
 ### Via a Bundler
-You will need to install a bundler like [Babel](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx#options) or [Vite](https://vitejs.dev/guide/features.html#jsx).  
+You will need to install a bundler like [Babel](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx) or [Vite](https://vitejs.dev/guide/features.html#jsx).  
 
 For example, in Vite, add the `esbuild.jsx` property:
 

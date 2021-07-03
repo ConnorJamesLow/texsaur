@@ -1,17 +1,24 @@
 /// <reference path="../JSX.d.ts" />
+import * as svg from './svg';
 
-function jsx<T extends JSX.Tag = JSX.Tag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[typeof tag]> | null, ...children: Node[]): JSX.Element<T>
+function jsx<T extends JSX.HTMLTag = JSX.HTMLTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[typeof tag]> | null, ...children: Node[]): HTMLElement
+function jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[typeof tag]> | null, ...children: Node[]): SVGElement
 function jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: Node[]): Node
-function jsx(tag: JSX.Tag | JSX.Component, properties: object | null, ...children: Node[]) {
+function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: Node[]) {
     if (typeof tag === 'function') {
         return tag(properties ?? {}, children);
     }
+
+    if(svg.isSvgTag(tag)) {
+        return svg.parseSvgElement(tag, properties ?? {}, ...children);
+    }
+    
     type Tag = typeof tag;
-    const element : HTMLElementTagNameMap[Tag] = document.createElement(tag);
+    const element : JSX.IntrinsicElementMap[Tag] = document.createElement(tag);
 
     let map = (properties ?? {}) as RecursivePartial<JSX.IntrinsicElements[typeof tag]>;
     let prop: keyof JSX.IntrinsicElements[typeof tag];
-    for (prop of (Object.keys(map ?? {}) as any)) {
+    for (prop of Object.keys(map)) {
         const warn = (expected: string, actual: any) => console.warn(
             tag,
             `received incorrect value type for property '${prop}': expected `,
