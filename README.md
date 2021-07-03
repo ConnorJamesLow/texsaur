@@ -21,6 +21,8 @@ import jsx from 'texsaur';
 const div: HTMLElement = <div class="example" onclick={() => console.log('clicked!')}>Hello there</div>;
 ```
 
+[Here's a playground](https://www.typescriptlang.org/play?target=2&module=1#code/PQKgsAUABCUAICsDOAPKyWRsSkCWAtgA4D2ATgC7qpQBmZJBUA5BQKYpICGArmcwG5cEWjwB2AYwp4SYqACU2E8gBMAFAG8o7FFQC+ALihadFI0gpk8YgOZQ9ASmNYorsmwp85AHiREuYgB8GqZ63sB+AYFCEHrCymIWUABGPBQUslAAvFBqLq7eqemZshIANngSANZZGmpOWYFQDCQUAHRcRERsYioAwgAWeGXq3orKZCraHBRZAER9FdVsUxQDbFAAQmkZYm1zUMCBDnqB+a4X28Vi5+FFu2cQDvGySS1UOXnQF94EXNaPC5A4z3WRxb4FYB-AGQZ4QSAqEgSHgEHrtZIkFQATw6XR6-SGIzU7wcAiAA).
+
 
 ### Resuability
 You can create a reusable component by creating a function:
