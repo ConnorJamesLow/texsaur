@@ -1,7 +1,7 @@
 # Texsaur
 A simple jsx to DOM `Node` parser.  
 
-[![View npm package](https://img.shields.io/npm/v/texsaur.svg?style=for-the-badge)](https://www.npmjs.com/package/texsaur)
+[![View npm package](https://img.shields.io/npm/v/texsaur.svg?style=for-the-badge&color=blueviolet)](https://www.npmjs.com/package/texsaur)
 
 ## Usage
 To create an element in js, we *could* use `document.createElement`:
