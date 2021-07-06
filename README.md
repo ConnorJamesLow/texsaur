@@ -4,7 +4,7 @@ A simple jsx to DOM `Node` parser.
 [![View npm package](https://img.shields.io/npm/v/texsaur.svg?style=for-the-badge&color=blueviolet)](https://www.npmjs.com/package/texsaur)
 
 ## Usage
-To create an element in js, we *could* use `document.createElement`:
+To create a DOM element in JavaScript, we *could* use `document.createElement`:
 
 ```ts
 const div = document.createElement('div');
@@ -38,7 +38,7 @@ document.body.appendChild(
   <div>
     <Header title="Hello there" />
     {/* Same as */}
-    {Header({title: 'Hello there' })}
+    {Header({ title: 'Hello there' })}
   </div>
 )
 ```
