@@ -12,7 +12,7 @@ function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | 
     if(svg.isSvgTag(tag)) {
         return svg.parseSvgElement(tag, properties ?? {}, ...children);
     }
-    
+
     type Tag = typeof tag;
     const element : JSX.IntrinsicElementMap[Tag] = document.createElement(tag);
 
@@ -84,7 +84,7 @@ function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | 
     // append children
     for (let child of children) {
         if (typeof child === 'string') {
-            element.innerText += child;
+            element.append(child);
             continue;
         }
         if (Array.isArray(child)) {
