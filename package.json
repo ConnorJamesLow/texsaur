@@ -3,7 +3,6 @@
   "version": "0.2.3",
   "description": "",
   "types": "./dist/index.d.ts",
-  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "dev": "npx tsc -w",
