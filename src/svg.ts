@@ -1,5 +1,4 @@
 const SVG_TAGS = [
-    "a",
     "circle",
     "clipPath",
     "defs",
