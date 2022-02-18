@@ -2,13 +2,7 @@ import jsx, { JSXDOM } from './index';
 import 'mocha';
 import { expect } from 'chai';
 import { JSDOM } from 'jsdom';
-const { document, HTMLDivElement, HTMLElement, Node } = new JSDOM(`<!DOCTYPE html>
-<head>
-</head>
-<body>
-    
-</body>
-</html>`).window;
+const { document, HTMLDivElement, HTMLElement, Node } = new JSDOM(`<!DOCTYPE html>`).window;
 
 // Need to polyfill these without a browser:
 JSXDOM.useDocument(document);
