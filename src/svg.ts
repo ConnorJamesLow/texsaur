@@ -63,7 +63,7 @@ export function isSvgTag(tag: string) {
     return SVG_TAGS.includes(tag);
 }
 
-export function parseSvgElement(tag: string, attributes: { [key: string]: any }, ...children: Node[]) {
+export function parseSvgElement(tag: string, attributes: { [key: string]: any }, ...children: JSX.Child[]) {
     const element = document.createElementNS(SVG_XMLNS, tag);
     let prop: keyof typeof attributes;
     for (prop of Object.keys(attributes)) {
