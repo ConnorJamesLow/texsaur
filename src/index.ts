@@ -1,10 +1,32 @@
 /// <reference path="../JSX.d.ts" />
 import * as svg from './svg';
 
-function jsx<T extends JSX.HTMLTag = JSX.HTMLTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[typeof tag]> | null, ...children: JSX.Child[]): HTMLElement
-function jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[typeof tag]> | null, ...children: JSX.Child[]): SVGElement
+let customDom: Document | null = null;
+let customNode: any;
+
+export function useDocument(dom: Document) {
+    customDom = dom;
+}
+
+export function useNode(node: any) {
+    customNode = node;
+}
+
+function getDocument() {
+    return customDom ?? document;
+}
+
+function getNode() {
+    return customNode ?? Node;
+}
+
+
+function jsx<T extends JSX.HTMLTag = JSX.HTMLTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: JSX.Child[]): HTMLElement
+function jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: JSX.Child[]): SVGElement
 function jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: JSX.Child[]): Node
 function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: JSX.Child[]) {
+    const document = getDocument();
+    
     if (typeof tag === 'function') {
         return tag(properties ?? {}, children);
     }
@@ -83,7 +105,7 @@ function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | 
 
     // append children
     for (let child of children) {
-        if (child instanceof Node) {
+        if (child instanceof getNode()) {
             element.appendChild(child);
             continue;
         }
