@@ -1,16 +1,9 @@
 /// <reference path="../JSX.d.ts" />
+import { customDom, customNode, useDocument, useNode } from './dom';
 import * as svg from './svg';
+export const JSXDOM = { useDocument, useNode };
 
-let customDom: Document | null = null;
-let customNode: any;
 
-export function useDocument(dom: Document) {
-    customDom = dom;
-}
-
-export function useNode(node: any) {
-    customNode = node;
-}
 
 function getDocument() {
     return customDom ?? document;
@@ -26,17 +19,17 @@ function jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePar
 function jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: JSX.Child[]): Node
 function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: JSX.Child[]) {
     const document = getDocument();
-    
+
     if (typeof tag === 'function') {
         return tag(properties ?? {}, children);
     }
 
-    if(svg.isSvgTag(tag)) {
+    if (svg.isSvgTag(tag)) {
         return svg.parseSvgElement(tag, properties ?? {}, ...children);
     }
 
     type Tag = typeof tag;
-    const element : JSX.IntrinsicElementMap[Tag] = document.createElement(tag);
+    const element: JSX.IntrinsicElementMap[Tag] = document.createElement(tag);
 
     let map = (properties ?? {}) as RecursivePartial<JSX.IntrinsicElements[typeof tag]>;
     let prop: keyof JSX.IntrinsicElements[typeof tag];
@@ -45,7 +38,7 @@ function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | 
             tag,
             `received incorrect value type for property '${prop}': expected `,
             expected,
-            `got ${typeof actual}` 
+            `got ${typeof actual}`
         );
 
         // Extract values:

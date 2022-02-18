@@ -58,12 +58,17 @@ const SVG_TAGS = [
 ]
 
 const SVG_XMLNS = 'http://www.w3.org/2000/svg';
+let __experimental_warning_shown = false;
 
 export function isSvgTag(tag: string) {
     return SVG_TAGS.includes(tag);
 }
 
 export function parseSvgElement(tag: string, attributes: { [key: string]: any }, ...children: JSX.Child[]) {
+    if(!__experimental_warning_shown) {
+        __experimental_warning_shown = true;
+        console.warn('texsaur SVG support is experimental!');
+    }
     const element = document.createElementNS(SVG_XMLNS, tag);
     let prop: keyof typeof attributes;
     for (prop of Object.keys(attributes)) {
