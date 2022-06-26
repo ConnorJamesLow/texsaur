@@ -47,7 +47,7 @@ To work with JSX, the function must implement `Component`:
 
 ```ts
 interface Component {
-  (properties?: { [key: string]: any }, children?: Node[]): Node
+  (properties?: { [key: string]: any }, children?: Node | Node[]): Element
 }
 ```
 

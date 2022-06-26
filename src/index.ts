@@ -14,10 +14,10 @@ function getNode() {
 }
 
 
-function jsx<T extends JSX.HTMLTag = JSX.HTMLTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: JSX.Child[]): HTMLElement
-function jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: JSX.Child[]): SVGElement
-function jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: JSX.Child[]): Node
-function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: JSX.Child[]) {
+function jsx<T extends JSX.HTMLTag = JSX.HTMLTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: Node[]): HTMLElement
+function jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: Node[]): SVGElement
+function jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: Node[]): Node
+function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: Node[]) {
     const document = getDocument();
 
     if (typeof tag === 'function') {

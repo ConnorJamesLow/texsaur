@@ -1,7 +1,7 @@
 /// <reference lib="dom" />
 
 declare namespace JSX {
-    type Child = Node | Node[];
+    type Children = Element | Element[];
     type Element = globalThis.Element;
     interface IntrinsicElements extends IntrinsicElementMap { }
 
@@ -29,7 +29,7 @@ declare namespace JSX {
     type SVGTag = keyof SVGElementTagNameMap;
 
     interface Component {
-        (properties?: { [key: string]: any }, children?: Child[]): Child
+        (properties?: { [key: string]: any }, children?: Node | Node[]): Element
     }
 }
 

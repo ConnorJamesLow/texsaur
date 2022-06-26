@@ -15,11 +15,13 @@ describe('jsx: intrinsic elements', () => {
 });
 
 describe('jsx: components', () => {
-    const Foo = ({ bar }: { bar?: string }, children: any) => <div>{bar} {children}</div>;
+    const Foo = ({ bar }: { bar?: string }, children: any) => <div>{bar ?? ''} {children}</div>;
     it('do not return null', () => expect(<Foo />).to.not.be.null);
     it('can render an instance of an HTMLElement', () => expect(<Foo />).to.be.instanceOf(HTMLElement));
     it('can receive named props', () => expect((<Foo bar='baz' />).textContent?.trim()).to.equal('baz'));
     it('can receive children', () => expect((<Foo><div>bar</div><div>baz</div></Foo>).childElementCount).to.equal(2));
+    it('can be nested in other elements', () => expect((<div><Foo bar='baz' /></div>).textContent?.trim()).to.equal('baz'));
+    it('can be nested in other components', () => expect((<Foo><Foo bar='baz' /></Foo>).textContent?.trim()).to.equal('baz'));
 });
 
 describe('jsx: interpolation', () => {

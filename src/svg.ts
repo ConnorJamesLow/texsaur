@@ -64,7 +64,7 @@ export function isSvgTag(tag: string) {
     return SVG_TAGS.includes(tag);
 }
 
-export function parseSvgElement(tag: string, attributes: { [key: string]: any }, ...children: JSX.Child[]) {
+export function parseSvgElement(tag: string, attributes: { [key: string]: any }, ...children: Node[]) {
     if(!__experimental_warning_shown) {
         __experimental_warning_shown = true;
         console.warn('texsaur SVG support is experimental!');
