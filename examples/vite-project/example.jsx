@@ -1,5 +1,3 @@
-import jsx from 'texsaur';
-
 /**
  * @param {{ onClick: (ev: MouseEvent) => any}} param0 
  * @param {...} children 
@@ -11,9 +9,12 @@ const Example = ({ onClick }, ...children) => (
 
 const div = <div>Hello there.</div>;
 
-export default <main>
+/** @type {HTMLElement} */
+const element = <main>
     {div}
     <Example onClick={() => alert('clicked!')}>
         Hello from inside the Example component!
     </Example>
 </main>;
+
+export default element;
