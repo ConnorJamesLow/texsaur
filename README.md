@@ -3,7 +3,7 @@ A simple jsx to DOM `Node` parser.
 
 [![View npm package](https://img.shields.io/npm/v/texsaur.svg?style=for-the-badge&color=blueviolet)](https://www.npmjs.com/package/texsaur)
 
-## Usage 🚀
+## 🚀 Usage
 To create a DOM element in JavaScript, we *could* use `document.createElement`:
 
 ```ts
