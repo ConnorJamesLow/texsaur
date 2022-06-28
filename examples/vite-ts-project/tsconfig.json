@@ -15,7 +15,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "jsxFactory": "jsx",
   },
   "include": ["src"]

@@ -81,7 +81,7 @@ First, configure your `tsconfig.json`:
 
 ```jsonc
 "compilerOptions": {
-  "jsx": "react",
+  "jsx": "react", // "preserve" may also serve your needs.
   "jsxFactory": "jsx", 
 }
 ```
