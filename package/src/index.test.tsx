@@ -8,6 +8,20 @@ const { document, HTMLDivElement, HTMLElement, Node } = new JSDOM(`<!DOCTYPE htm
 JSXDOM.useDocument(document);
 JSXDOM.useNode(Node);
 
+//#region Make sure these typings still work.
+const NoProps: JSX.Component = () => <span>foo</span>;
+const OptionalProps: JSX.Component<{ foo?: string }> = ({ foo }) => <span>{foo?.length || 0}</span>;
+const RequiredProps: JSX.Component<{ foo: string }> = ({ foo }) => <span>{foo.length}</span>;
+const Children: JSX.Component = (_, children) => <div>{children}</div>;
+const test = (
+    <Children>
+        <NoProps />
+        <OptionalProps />
+        <OptionalProps foo='bar' />
+        <RequiredProps foo='bar' />
+    </Children>
+);
+//#endregion
 
 describe('jsx: intrinsic elements', () => {
     it('do not return null', () => expect(<div />).to.not.be.null);

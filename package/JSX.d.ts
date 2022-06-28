@@ -28,8 +28,8 @@ declare namespace JSX {
     type HTMLTag = keyof HTMLElementTagNameMap;
     type SVGTag = keyof SVGElementTagNameMap;
 
-    interface Component {
-        (properties?: { [key: string]: any }, children?: Node | Node[]): Element
+    interface Component<T = undefined | {}> {
+        (properties: T, children?: Node | Node[]): Element
     }
 }
 

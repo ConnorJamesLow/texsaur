@@ -1,11 +1,10 @@
 import jsx from 'texsaur';
 
-
 interface ExampleProps {
     onClick(ev: MouseEvent): any
 }
 
-const Example = ({ onClick }: ExampleProps, children: any) => (
+const Example : JSX.Component<ExampleProps> = ({ onClick }, children) => (
     <div class="example" onclick={onClick}>{children}</div>
 );
 
