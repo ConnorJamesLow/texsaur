@@ -43,7 +43,7 @@ document.body.appendChild(
   <div>
     <Header title="Hello there" />
     {/* Same as */}
-    {Header({ title: 'Hello there' })}
+    {Header({ title: 'Hello there.' })}
   </div>
 )
 ```
@@ -56,15 +56,10 @@ interface Component {
 }
 ```
 
-## Getting Started
-JSX requires a compiler/bundler.  
+## Bundlers
+JSX requires a compiler/bundler. Here are a few example set-ups (note: checkout the examples/ directory for sample projects):
 
-
-### Via a Bundler
-You will need to install a bundler like [Babel](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx) or [Vite](https://vitejs.dev/guide/features.html#jsx).  
-
-
-#### Vite
+### Vite
 In `vite.config.js`, add the `esbuild.jsx` property:
 
 ```js
@@ -75,9 +70,14 @@ export default {
 }
 ```
 
+#### Examples
 
-### For Typescript Users
-First, configure your tsconfig:
+ - [TypeScript](/ConnorJamesLow/texsaur/tree/main/examples/vite-ts-project).
+ - [JavaScript](/ConnorJamesLow/texsaur/tree/main/examples/vite-project).
+
+
+## For Typescript Users 🚀
+First, configure your `tsconfig.json`:
 
 ```jsonc
 "compilerOptions": {
@@ -90,4 +90,6 @@ Then, import _Texsaur_ in any **.tsx** file:
 
 ```tsx
 import jsx from 'texsaur';
+
+const div = <div>Hello there.</div>;
 ```
