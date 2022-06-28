@@ -72,8 +72,8 @@ export default {
 
 #### Examples
 
- - [TypeScript](/ConnorJamesLow/texsaur/tree/main/examples/vite-ts-project).
- - [JavaScript](/ConnorJamesLow/texsaur/tree/main/examples/vite-project).
+ - [TypeScript](//github.com/ConnorJamesLow/texsaur/tree/main/examples/vite-ts-project).
+ - [JavaScript](//github.com/ConnorJamesLow/texsaur/tree/main/examples/vite-project).
 
 
 ## For Typescript Users 🚀
