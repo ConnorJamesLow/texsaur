@@ -70,10 +70,10 @@ export default {
 }
 ```
 
-#### Examples
+**Examples**:
 
- - [TypeScript](//github.com/ConnorJamesLow/texsaur/tree/main/examples/vite-ts-project).
- - [JavaScript](//github.com/ConnorJamesLow/texsaur/tree/main/examples/vite-project).
+ - [TypeScript](//github.com/ConnorJamesLow/texsaur/tree/main/examples/vite-ts-project)
+ - [JavaScript](//github.com/ConnorJamesLow/texsaur/tree/main/examples/vite-project)
 
 
 ## 💙 Typescript Usage
