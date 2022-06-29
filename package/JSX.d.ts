@@ -15,8 +15,35 @@ declare namespace JSX {
     }
 
     type GlobalAttributes = CommonEvents & Partial<{
+
+        // per https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
+        accesskey: string
+        autocaptialize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters'
+        autofocus: boolean
+        class: string
+        contenteditable: boolean | 'false'
+        contextmenu: string
+        dir: 'ltr' | 'rtl' | 'auto'
+        draggable: 'true' | 'false'
+        enterkeyhint: string
+        hidden: boolean
         id: string
+        inputmode: string  
+        is: string
+        itemid: string
+        itemprop: string
+        itemref: string
+        itemscope: string
+        itemtype: string
+        lang: string
+        nonce: string
+        part: string
         role: string
+        slot: string
+        spellcheck: boolean | 'false'
+        tabindex: string | number
+        title: string
+        translate: true | 'yes' | 'no'
     }>;
 
 
