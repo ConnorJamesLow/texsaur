@@ -1,3 +1,5 @@
 src/
 .git*
 tsconfig.*
+*.test.tsx
+*.test.ts
