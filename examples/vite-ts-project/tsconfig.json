@@ -17,6 +17,7 @@
     "skipLibCheck": true,
     "jsx": "preserve",
     "jsxFactory": "jsx",
+    "jsxFragmentFactory": "jsx.Fragment"
   },
   "include": ["src"]
 }
