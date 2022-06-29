@@ -3,6 +3,7 @@
 declare namespace JSX {
     type Children = Element | Element[];
     type Element = globalThis.Element;
+    type Fragment = Node[];
     interface IntrinsicElements extends IntrinsicElementMap { }
 
     type CommonProperties = Partial<{
