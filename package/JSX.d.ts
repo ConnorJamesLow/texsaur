@@ -7,7 +7,7 @@ declare namespace JSX {
     interface IntrinsicElements extends IntrinsicElementMap { }
 
     type CommonProperties = Partial<{
-        style: Partial<CSSStyleDeclaration>
+        style: Partial<CSSStyleDeclaration> | string
         class: string
     }>
 
