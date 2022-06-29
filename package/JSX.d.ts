@@ -6,24 +6,26 @@ declare namespace JSX {
     type Fragment = Node[];
     interface IntrinsicElements extends IntrinsicElementMap { }
 
-    type CommonProperties = Partial<{
+    type HTMLElementCommonAttributes = Partial<{
         style: Partial<CSSStyleDeclaration> | string
-        class: string
     }>
 
     type CommonEvents = {
         [E in keyof GlobalEventHandlers]?: GlobalEventHandlers[E]
     }
 
-    type IntrinsicElementMap = {
-        [K in keyof HTMLElementTagNameMap]: CommonEvents & CommonProperties & {
-            [k: string]: any
-        }
-    } & {
-        [K in keyof SVGElementTagNameMap]: {
-            [k: string]: any
-        }
-    }
+    type GlobalAttributes = CommonEvents & Partial<{
+        id: string
+        role: string
+    }>;
+
+
+    type IntrinsicElementMap =
+        {
+            [K in keyof HTMLElementTagNameMap]: HTMLElementCommonAttributes & GlobalAttributes & Record<string, any>;
+        } & {
+            [K in keyof SVGElementTagNameMap]: GlobalAttributes & Record<string, any>;
+        };
 
     type Tag = keyof JSX.IntrinsicElements
     type HTMLTag = keyof HTMLElementTagNameMap;
@@ -33,6 +35,8 @@ declare namespace JSX {
         (properties: T, children?: Node | Node[]): Element
     }
 }
+
+type AllElementTagNameMap = HTMLElementTagNameMap & SVGElementTagNameMap;
 
 type RecursivePartial<T> = {
     [P in keyof T]?: RecursivePartial<T[P]>;
