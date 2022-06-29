@@ -1,3 +1,5 @@
+import { JsxDom } from "./index";
+
 const SVG_TAGS = [
     "circle",
     "clipPath",
@@ -65,7 +67,8 @@ export function isSvgTag(tag: string) {
 }
 
 export function parseSvgElement(tag: string, attributes: { [key: string]: any }, ...children: Node[]) {
-    if(!__experimental_warning_shown) {
+    const { document } = JsxDom;
+    if (!__experimental_warning_shown) {
         __experimental_warning_shown = true;
         console.warn('texsaur SVG support is experimental!');
     }

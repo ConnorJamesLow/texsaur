@@ -17,7 +17,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
     }
 
     type Tag = typeof tag;
-    const element: JSX.IntrinsicElementMap[Tag] = document.createElement(tag);
+    const element = document.createElement(tag);
 
     let map = (properties ?? {}) as RecursivePartial<JSX.IntrinsicElements[typeof tag]>;
     let prop: keyof JSX.IntrinsicElements[typeof tag];

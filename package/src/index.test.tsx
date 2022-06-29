@@ -21,8 +21,16 @@ const _ = <>
     <RequiredProps foo='bar' />
     <Children>
         <Children>
-            <input type="button" onclick={console.log} style="" />
-            <div style={{}}></div>
+            <input type="button"
+                onclick={console.log} 
+                style=""
+                autocaptialize='off' />
+            <div style={{}} contenteditable></div>
+            <svg id='svg' draggable='true'>
+                <g>
+                    <path />
+                </g>
+            </svg>
         </Children>
     </Children>
 </>;
@@ -40,11 +48,11 @@ describe('jsx: intrinsic elements', () => {
     it('can receive a string for style attribute', () => expect(
         (<div style="display: none" /> as HTMLDivElement).style.display
     ).to.equal('none'));
-    
+
     it('can accept data attributes', () => expect(
         (<div data-foo="bar" /> as HTMLDivElement).dataset.foo
     ).to.equal('bar'));
-    
+
     it('can accept arbitrary attributes', () => expect(
         (<div aria-label="foo" /> as HTMLElement).getAttribute('aria-label')
     ).to.equal('foo'));
