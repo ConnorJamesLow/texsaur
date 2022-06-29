@@ -1,12 +1,12 @@
-import jsx, { JSXDOM } from './index';
+import jsx, { JsxDom } from './index';
 import 'mocha';
 import { expect } from 'chai';
 import { JSDOM } from 'jsdom';
 const { document, HTMLDivElement, HTMLElement, Node } = new JSDOM(`<!DOCTYPE html>`).window;
 
 // Need to polyfill these without a browser:
-JSXDOM.useDocument(document);
-JSXDOM.useNode(Node);
+JsxDom.document = document;
+JsxDom.Node = Node;
 
 //#region Make sure these typings still work.
 const NoProps: JSX.Component = () => <span>foo</span>;
@@ -25,7 +25,6 @@ const test = <>
         </Children>
     </Children>
 </>;
-console.log(test.outerHTML);
 //#endregion
 
 describe('jsx: intrinsic elements', () => {
