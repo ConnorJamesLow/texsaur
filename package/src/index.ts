@@ -38,7 +38,8 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
             tag,
             `received incorrect value type for property '${prop}': expected `,
             expected,
-            `got ${typeof actual}`
+            `instead of`,
+            typeof actual
         );
 
         // Extract values:
@@ -64,6 +65,8 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
                         }
                         element.style[styleProperty] = v;
                     }
+                } else if (typeof value === 'string') {
+                    break;
                 } else {
                     warn('object', typeof value);
                 }
