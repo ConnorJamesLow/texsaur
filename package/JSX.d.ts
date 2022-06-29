@@ -3,10 +3,11 @@
 declare namespace JSX {
     type Children = Element | Element[];
     type Element = globalThis.Element;
+    type Fragment = Node[];
     interface IntrinsicElements extends IntrinsicElementMap { }
 
     type CommonProperties = Partial<{
-        style: Partial<CSSStyleDeclaration>
+        style: Partial<CSSStyleDeclaration> | string
         class: string
     }>
 
@@ -28,8 +29,8 @@ declare namespace JSX {
     type HTMLTag = keyof HTMLElementTagNameMap;
     type SVGTag = keyof SVGElementTagNameMap;
 
-    interface Component {
-        (properties?: { [key: string]: any }, children?: Node | Node[]): Element
+    interface Component<T = undefined | {}> {
+        (properties: T, children?: Node | Node[]): Element
     }
 }
 

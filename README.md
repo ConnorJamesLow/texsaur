@@ -66,6 +66,7 @@ In `vite.config.js`, add the `esbuild.jsx` property:
 export default {
   esbuild: {
     jsxFactory: 'jsx',
+    jsxFragment: 'jsx.Fragment', // optional - enables fragments (<></>)
   }
 }
 ```
@@ -81,8 +82,9 @@ First, configure your `tsconfig.json`:
 
 ```jsonc
 "compilerOptions": {
-  "jsx": "react",
+  "jsx": "react", // "preserve" may also serve your needs. 
   "jsxFactory": "jsx", 
+  "jsxFragmentFactory": "jsx.Fragment" // optional - enables fragments (<></>)
 }
 ```
 

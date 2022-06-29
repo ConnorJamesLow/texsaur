@@ -14,10 +14,10 @@ function getNode() {
 }
 
 
-function jsx<T extends JSX.HTMLTag = JSX.HTMLTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: Node[]): HTMLElement
-function jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: Node[]): SVGElement
-function jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: Node[]): Node
-function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: Node[]) {
+function __jsx<T extends JSX.HTMLTag = JSX.HTMLTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: Node[]): HTMLElement
+function __jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: Node[]): SVGElement
+function __jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: Node[]): Node
+function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: Node[]) {
     const document = getDocument();
 
     if (typeof tag === 'function') {
@@ -38,7 +38,8 @@ function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | 
             tag,
             `received incorrect value type for property '${prop}': expected `,
             expected,
-            `got ${typeof actual}`
+            `instead of`,
+            typeof actual
         );
 
         // Extract values:
@@ -64,6 +65,8 @@ function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | 
                         }
                         element.style[styleProperty] = v;
                     }
+                } else if (typeof value === 'string') {
+                    break;
                 } else {
                     warn('object', typeof value);
                 }
@@ -110,5 +113,12 @@ function jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | 
     }
     return element;
 }
+
+function Fragment(_: {}, children: Node[]): JSX.Fragment {
+    return children;
+}
+
+const jsx: typeof __jsx & { Fragment?: typeof Fragment } = __jsx;
+jsx.Fragment = Fragment;
 
 export default jsx;
