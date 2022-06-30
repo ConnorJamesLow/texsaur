@@ -16,7 +16,6 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
         return svg.parseSvgElement(tag, properties ?? {}, ...children);
     }
 
-    type Tag = typeof tag;
     const element = document.createElement(tag);
 
     let map = (properties ?? {}) as RecursivePartial<JSX.IntrinsicElements[typeof tag]>;
@@ -65,7 +64,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
         // Event callbacks:
         if (/^on/.test(prop)) {
             if (typeof value === 'function') {
-                element.addEventListener(prop.substr(2), map[prop] as any);
+                element.addEventListener(prop.substring(2), map[prop] as any);
             } else {
                 warn('function', typeof value);
             }
@@ -88,7 +87,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
     }
 
     // append children
-    for (let child of children) {
+    for (let child of children.flat()) {
         if (child instanceof Node) {
             element.appendChild(child);
             continue;

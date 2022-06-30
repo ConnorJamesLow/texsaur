@@ -33,7 +33,7 @@ const SVG_TAGS = [
     "filter",
     "foreignObject",
     "g",
-    "image",
+    // "image",
     "line",
     "linearGradient",
     "marker",
@@ -53,11 +53,11 @@ const SVG_TAGS = [
     "symbol",
     "text",
     "textPath",
-    "title",
+    // "title",
     "tspan",
     "use",
     "view",
-]
+];
 
 const SVG_XMLNS = 'http://www.w3.org/2000/svg';
 let __experimental_warning_shown = false;
@@ -67,7 +67,7 @@ export function isSvgTag(tag: string) {
 }
 
 export function parseSvgElement(tag: string, attributes: { [key: string]: any }, ...children: Node[]) {
-    const { document } = JsxDom;
+    const { document, Node } = JsxDom;
     if (!__experimental_warning_shown) {
         __experimental_warning_shown = true;
         console.warn('texsaur SVG support is experimental!');
@@ -80,7 +80,7 @@ export function parseSvgElement(tag: string, attributes: { [key: string]: any },
         const value = attributes[prop] as any;
 
         // Add attributes:
-        element.setAttributeNS(null, prop, value);
+        element.setAttribute(prop, value);
     }
 
     // append children
@@ -89,7 +89,11 @@ export function parseSvgElement(tag: string, attributes: { [key: string]: any },
             element.append(...child);
             continue;
         }
-        element.appendChild(child);
+        if (child instanceof Node) {
+            element.appendChild(child);
+        } else {
+            element.append(child);
+        }
     }
     return element;
 }
