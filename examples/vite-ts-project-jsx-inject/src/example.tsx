@@ -11,11 +11,11 @@ const Example: JSX.Component<ExampleProps> = ({ onClick }, children) => (
 
 
 const div = <div>Hello there.</div> as HTMLElement;
-const span = <span>Hello from inside the Example component!</span>;
+const spanElement = <span>Hello from inside the Example component!</span>;
 const content = <>
     {div}
     <Example onClick={() => alert('clicked!')}>
-        {span}
+        {spanElement}
     </Example>
     <Example onClick={() => console.log(svgTest)}>
         {svgTest}
