@@ -3,5 +3,9 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "esnext",
-    }
+        "jsx": "react"
+    },
+    "include": [
+        "src/*.test.tsx"
+    ]
 }
