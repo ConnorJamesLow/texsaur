@@ -95,3 +95,13 @@ import jsx from 'texsaur';
 
 const div = <div>Hello there.</div>;
 ```
+
+Add custom elements to the [`JSX.IntrinsicElements`](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) interface:
+
+```ts
+namespace JSX {
+  interface IntrinsicElements {
+    ['my-element']: HTMLElement // or another type representing your custom element
+  }
+ }
+ ```
