@@ -3,7 +3,9 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "esnext",
-        "jsx": "react"
+        "jsx": "react",
+        "jsxFactory": "jsx",
+        "jsxFragmentFactory": "jsx.Fragment",
     },
     "include": [
         "src/*.test.tsx"

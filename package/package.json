@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "npx tsc -w",
-    "test": "cross-env TS_NODE_PROJECT=\"tsconfig.test.json\" mocha -r ts-node/register './src/**/*.test.tsx'",
+    "test": "mocha",
     "build": "npx tsc",
     "prepare": "npm run build"
   },
