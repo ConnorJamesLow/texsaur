@@ -3,3 +3,5 @@ src/
 tsconfig.*
 *.test.tsx
 *.test.ts
+test/
+.mocharc.json

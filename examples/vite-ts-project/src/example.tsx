@@ -10,7 +10,6 @@ const Example: JSX.Component<ExampleProps> = ({ onClick }, children) => (
     <div class="example" onclick={onClick} aria-label="Example">{children}</div>
 );
 
-
 const div = <div>Hello there.</div> as HTMLElement;
 const span = <span>Hello from inside the Example component!</span>;
 const content = <>
