@@ -56,6 +56,12 @@ describe('jsx: intrinsic elements', () => {
     it('can accept arbitrary attributes', () => expect(
         (<div aria-label="foo" /> as HTMLElement).getAttribute('aria-label')
     ).to.equal('foo'));
+
+    it('can get className and classList after class attribute assignment', () => {
+        const div = <div class="foo"></div>;
+        expect(div.classList[0]).to.equal('foo');
+        expect(div.className).to.equal('foo');
+    })
 });
 
 describe('jsx: fragments', () => {
