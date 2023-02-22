@@ -59,7 +59,7 @@ declare namespace JSX {
     type SVGTag = keyof SVGElementTagNameMap;
 
     interface Component<T = undefined | {}> {
-        (properties: T, children?: Node | Node[]): Element
+        (properties: T, children?: Node[]): Element
     }
 }
 
