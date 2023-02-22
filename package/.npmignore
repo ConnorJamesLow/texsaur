@@ -1,7 +1,6 @@
 src/
 .git*
 tsconfig.*
-*.test.tsx
-*.test.ts
+*.test.*
 test/
 .mocharc.json
