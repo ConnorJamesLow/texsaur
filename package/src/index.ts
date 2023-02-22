@@ -35,14 +35,6 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
 
         // Map known properties:
         switch (prop) {
-            case "class": {
-                if (typeof value === 'string') {
-                    element.className = value;
-                } else {
-                    warn('string', typeof value);
-                }
-                continue;
-            }
             case "style": {
                 if (typeof value === 'object') {
                     for (const [k, v] of Object.entries(value)) {
@@ -55,7 +47,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
                 } else if (typeof value === 'string') {
                     break;
                 } else {
-                    warn('object', typeof value);
+                    warn('object | string', typeof value);
                 }
                 continue;
             }
