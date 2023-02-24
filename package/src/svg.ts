@@ -1,4 +1,4 @@
-import { JsxDom } from "./index";
+import JsxDom from "./dom";
 
 const SVG_TAGS = [
     "circle",
