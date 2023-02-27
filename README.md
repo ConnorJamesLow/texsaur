@@ -82,7 +82,7 @@ First, configure your `tsconfig.json`:
 
 ```jsonc
 "compilerOptions": {
-  "jsx": "react", // "preserve" may also serve your needs. 
+  "jsx": "react",
   "jsxFactory": "jsx", 
   "jsxFragmentFactory": "jsx.Fragment" // optional - enables fragments (<></>)
 }
