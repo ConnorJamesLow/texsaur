@@ -15,7 +15,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "jsxFactory": "jsx",
     "jsxFragmentFactory": "jsx.Fragment"
   },
