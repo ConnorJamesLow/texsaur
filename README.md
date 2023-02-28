@@ -60,6 +60,7 @@ interface Component {
 JSX requires a compiler/bundler. Here are a few example set-ups (note: checkout the examples/ directory for corresponding sample projects):
 
 ### ⚡ Vite
+
 In `vite.config.js`, add the `esbuild.jsx` property:
 
 ```js
@@ -70,6 +71,8 @@ export default {
   }
 }
 ```
+
+_However_, if your project contains a tsconfig, vite should read these properties from there as of version 4 - no vite configuration required!
 
 **Examples**:
 
