@@ -81,6 +81,14 @@ _However_, if your project contains a tsconfig, vite should read these propertie
 
 
 ## 💙 Typescript Usage
+Texsaur supports a few models of JSX code generation (determined the `jsx` property in your tsconfig):
+- `"react"`,
+- `"react-jsx"`,
+- and `"preserve"`.
+
+The differences between these are outlined in the following sections.
+
+### Method 1: `"jsx": "react"`
 First, configure your `tsconfig.json`:
 
 ```jsonc
@@ -94,10 +102,49 @@ First, configure your `tsconfig.json`:
 Then, import _Texsaur_ in any **.tsx** file:
 
 ```tsx
-import jsx from 'texsaur';
+import jsx from 'texsaur'
 
-const div = <div>Hello there.</div>;
+const div = <div>Hello there.</div>
 ```
+
+### Method 2: `"jsx": "react-jsx"`
+This method comes with a few more quirks, but it allows you to drop the `import jsx` statements in your `tsx` files.  
+
+In your `tsconfig.json`:
+
+```jsonc
+"compilerOptions": {
+  "moduleResolution": "node16", // or nodenext
+  "jsx": "react-jsx",
+  "jsxImportSource": "texsaur"
+}
+```
+
+By using `node16` module resolution, your package will be able to take advantage of the `exports` field in texsaur's package.json. However, this requires you use the file suffix in imports:
+
+```tsx
+import Foo from './components/foo'
+
+// becomes
+
+import Foo from './components/foo.js' // .js even if it's .tsx or .ts
+```
+
+### Method 3: `"jsx": "preserve"`
+Please note that this repository does not contain any examples of this, nor have we tested it. In theory, this should work.  
+
+Configure your `tsconfig.json`:
+
+```jsonc
+"compilerOptions": {
+  "jsx": "preserve",
+}
+```
+
+This will output the jsx code as-is. You will need another bundler/compiler (e.g. babel) to transform it before it can be used in a browser.
+
+
+### Declare Custom Elements
 
 Add custom elements to the [`JSX.IntrinsicElements`](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) interface:
 
@@ -107,4 +154,4 @@ namespace JSX {
     ['my-element']: HTMLElement // or another type representing your custom element
   }
  }
- ```
+```
