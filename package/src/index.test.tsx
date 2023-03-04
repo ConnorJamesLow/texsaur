@@ -1,3 +1,5 @@
+/** @jsx jsx */
+/** @jsxFrag jsx.Fragment */
 import jsx, { JsxDom } from './index';
 import 'mocha';
 import { expect } from 'chai';

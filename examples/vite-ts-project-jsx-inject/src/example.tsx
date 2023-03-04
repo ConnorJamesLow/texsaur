@@ -1,5 +1,5 @@
-import { Counter } from './counter';
-import svgTest from './svg-test';
+import { Counter } from './counter.js';
+import svgTest from './svg-test.js';
 
 interface ExampleProps {
     onClick(ev: MouseEvent): any

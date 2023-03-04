@@ -1,4 +1,4 @@
-import jsx from 'texsaur';
+import jsx from "texsaur";
 
 export const Counter: JSX.Component = () => {
     let clicks = 0;

@@ -1,4 +1,4 @@
-/// <reference path="../JSX.d.ts" />
+/// <reference path="../types/jsx.d.ts" />
 import JsxDom from './dom';
 import * as svg from './svg';
 
