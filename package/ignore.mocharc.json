@@ -1,6 +1,5 @@
 {
     "extension": [
-        "js",
         "ts",
         "tsx"
     ],

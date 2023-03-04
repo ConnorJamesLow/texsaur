@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "texsaur": "file:../../package"
+  }
+}

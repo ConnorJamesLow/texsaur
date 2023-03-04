@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
-    "moduleResolution": "Node",
+    "moduleResolution": "node16",
     "strict": true,
     "sourceMap": true,
     "resolveJsonModule": true,
@@ -15,9 +15,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "jsx": "react",
-    "jsxFactory": "jsx",
-    "jsxFragmentFactory": "jsx.Fragment"
+    "jsx": "react-jsx",
+    "jsxImportSource": "texsaur"
   },
   "include": ["src"]
 }

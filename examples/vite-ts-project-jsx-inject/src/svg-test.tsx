@@ -1,4 +1,3 @@
-
 export default <>
     <svg viewBox="0 -20 100 50">
         <switch>
