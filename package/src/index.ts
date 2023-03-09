@@ -5,7 +5,7 @@ import * as svg from './svg';
 function __jsx<T extends JSX.HTMLTag = JSX.HTMLTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: Node[]): HTMLElement
 function __jsx<T extends JSX.SVGTag = JSX.SVGTag>(tag: T, properties: RecursivePartial<JSX.IntrinsicElements[T]> | null, ...children: Node[]): SVGElement
 function __jsx(tag: JSX.Component, properties: Parameters<typeof tag> | null, ...children: Node[]): Node
-function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: Node[]) {
+function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } | null, ...children: any[]) {
     const { document, Node } = JsxDom;
 
     if (typeof tag === 'function') {
@@ -84,7 +84,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
             element.appendChild(child);
             continue;
         }
-        if (Array.isArray(child)) {
+        if (typeof child !== 'string' && child?.[Symbol.iterator]) {
             element.append(...child);
             continue;
         }
