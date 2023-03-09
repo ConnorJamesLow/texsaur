@@ -1,6 +1,6 @@
 {
   "name": "texsaur",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
