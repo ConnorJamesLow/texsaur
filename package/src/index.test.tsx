@@ -64,6 +64,17 @@ describe('jsx: intrinsic elements', () => {
         expect(div.classList[0]).to.equal('foo');
         expect(div.className).to.equal('foo');
     })
+
+    it('can accept HTMLCollections as children', () => {
+        const parent = <div class="parent">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+        const container = <section>{parent.children}</section>
+        expect(container.children).to.have.a.lengthOf(3);
+        expect(container.children[2].className).to.equal("child");
+    })
 });
 
 describe('jsx: fragments', () => {
