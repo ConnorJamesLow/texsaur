@@ -24,7 +24,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
         const warn = (expected: string, actual: any) => console.warn(
             tag,
             `received incorrect value type for property '${prop}': expected `,
-            expected,
+            typeof expected,
             `instead of`,
             typeof actual
         );
@@ -47,7 +47,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
                 } else if (typeof value === 'string') {
                     break;
                 } else {
-                    warn('object | string', typeof value);
+                    warn('object | string', value);
                 }
                 continue;
             }
@@ -58,7 +58,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
             if (typeof value === 'function') {
                 element.addEventListener(prop.substring(2), map[prop] as any);
             } else {
-                warn('function', typeof value);
+                warn('function', value);
             }
             continue;
         }
@@ -73,8 +73,8 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
                 anyReference[prop] = value;
             }
         } catch (error) {
-            console.error(`Could not set ${prop} on ${element.tagName}`, error)
-            warn(typeof (element as any)[prop as any], typeof value)
+            console.error(`Could not set ${prop} on ${element.tagName}`, error);
+            warn(typeof (element as any)[prop as any], value);
         }
     }
 
