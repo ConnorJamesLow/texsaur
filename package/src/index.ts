@@ -20,8 +20,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
 
     let map = (properties ?? {}) as RecursivePartial<JSX.IntrinsicElements[typeof tag]>;
     let prop: keyof JSX.IntrinsicElements[typeof tag];
-    let resolve: null | ((element: Element) => any) = null;
-    const promise = new Promise(r => resolve = r);
+    let ref: null | ((element: Element) => any) = null;
     for (prop of Object.keys(map)) {
         const warn = (expected: string, actual: any) => console.warn(
             tag,
@@ -55,7 +54,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
             }
             case "ref": {
                 if (typeof value === 'function') {
-                    value(promise);
+                    ref = value;
                 }
             }
         }
@@ -97,8 +96,8 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
         }
         element.append(child);
     }
-    if (resolve) {
-        (resolve as (element: Element) => any)(element);
+    if (ref) {
+        ref(element);
     }
     return element;
 }

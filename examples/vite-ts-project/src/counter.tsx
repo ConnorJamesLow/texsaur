@@ -8,7 +8,7 @@ export const Counter: JSX.Component = () => {
     return (
         <div class="counter">
             <button onclick={() => display.innerHTML = getMessage()}>
-                <span ref={async (p) => display = await p}>{getMessage()}</span>
+                <span ref={r => display = r}>{getMessage()}</span>
             </button>
         </div>
     );

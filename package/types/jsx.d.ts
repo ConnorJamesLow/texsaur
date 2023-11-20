@@ -8,7 +8,7 @@ declare namespace JSX {
 
     type HTMLElementCommonAttributes = Partial<{
         style: Partial<CSSStyleDeclaration> | string
-        ref(element: Promise<Element>): any
+        ref(element: Element): any
     }>
 
     type CommonEvents = {
