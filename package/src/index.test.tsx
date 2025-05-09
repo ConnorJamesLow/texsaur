@@ -24,7 +24,7 @@ const _ = <>
     <Children>
         <Children>
             <input type="button"
-                onclick={console.log} 
+                onclick={console.log}
                 style=""
                 autocaptialize='off' />
             <div style={{}} contenteditable></div>
@@ -38,8 +38,8 @@ const _ = <>
 </>;
 //#endregion
 
-describe('jsx: intrinsic elements', () => {
-    it('do not return null', () => expect(<div />).to.not.be.null);
+describe('jsx: intrinsic element', () => {
+    it('does not return null', () => expect(<div />).to.not.be.null);
 
     it('can render an instance of an HTMLDivElement', () => expect(<div />).to.be.instanceOf(HTMLDivElement));
 
@@ -77,10 +77,10 @@ describe('jsx: intrinsic elements', () => {
     })
 });
 
-describe('jsx: fragments', () => {
+describe('jsx: fragment', () => {
     it('return arrays', () => expect(Array.isArray(<></>)).to.be.true);
 
-    it('preserve children', () => {
+    it('does preserve children', () => {
         const fragment = (<><div>1</div><div>2</div></> as unknown as HTMLElement[]);
         expect(fragment.length).to.equal(2);
         expect(fragment[0].textContent).to.equal('1');
@@ -88,10 +88,10 @@ describe('jsx: fragments', () => {
     });
 });
 
-describe('jsx: components', () => {
+describe('jsx: component', () => {
     const Foo: JSX.Component<{ bar?: string }> = ({ bar }, children) => <div>{bar ?? ''} {children}</div>;
 
-    it('do not return null', () => expect(<Foo />).to.be.not.null);
+    it('does not return null', () => expect(<Foo />).to.be.not.null);
 
     it('can render an instance of an HTMLElement', () => expect(<Foo />).to.be.instanceOf(HTMLElement));
 
@@ -131,11 +131,15 @@ describe('jsx: interpolation', () => {
         (<div>{100}</div>).textContent
     ).to.equal('100'));
 
-    it('can render booleans', () => expect(
-        (<div>{true}</div>).textContent
-    ).to.equal('true'));
-
     it('can render Date objects', () => expect(
         new Date((<div>{date}</div>).textContent!).toUTCString()
     ).to.equal(date.toUTCString()));
+
+    it('can render truthy booleans', () => expect(
+        (<div>{true}</div>).textContent
+    ).to.equal('true'));
+
+    it('does not render falsey values', () => expect((
+        <div>{false}{(1 * 1) === 2 && 'yes'}{[][0] && ""}</div>
+    ).childElementCount).to.equal(0));
 });
