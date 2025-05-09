@@ -88,6 +88,9 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
             element.append(...child);
             continue;
         }
+        if (!child) {
+            continue;
+        }
         element.append(child);
     }
     return element;
