@@ -140,6 +140,6 @@ describe('jsx: interpolation', () => {
     ).to.equal('true'));
 
     it('does not render falsey values', () => expect((
-        <div>{false}{(1 * 1) === 2 && 'yes'}</div>
+        <div>{false}{(1 * 1) === 2 && 'yes'}{[][0] && ""}</div>
     ).childElementCount).to.equal(0));
 });
