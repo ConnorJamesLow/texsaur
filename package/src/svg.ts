@@ -33,7 +33,6 @@ const SVG_TAGS = [
     "filter",
     "foreignObject",
     "g",
-    // "image",
     "line",
     "linearGradient",
     "marker",
@@ -45,22 +44,18 @@ const SVG_TAGS = [
     "polyline",
     "radialGradient",
     "rect",
-    // "script",
     "stop",
-    // "style",
     "svg",
     "switch",
     "symbol",
     "text",
     "textPath",
-    // "title",
     "tspan",
     "use",
     "view",
 ];
 
 const SVG_XMLNS = 'http://www.w3.org/2000/svg';
-let __experimental_warning_shown = false;
 
 export function isSvgTag(tag: string) {
     return SVG_TAGS.includes(tag);
@@ -68,10 +63,6 @@ export function isSvgTag(tag: string) {
 
 export function parseSvgElement(tag: string, attributes: { [key: string]: any }, ...children: Node[]) {
     const { document, Node } = JsxDom;
-    if (!__experimental_warning_shown) {
-        __experimental_warning_shown = true;
-        console.warn('texsaur SVG support is experimental!');
-    }
     const element = document.createElementNS(SVG_XMLNS, tag);
     let prop: keyof typeof attributes;
     for (prop of Object.keys(attributes)) {
