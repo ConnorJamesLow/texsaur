@@ -79,6 +79,46 @@ _However_, if your project contains a tsconfig, vite should read these propertie
  - [TypeScript](//github.com/ConnorJamesLow/texsaur/tree/main/examples/vite-ts-project)
  - [JavaScript](//github.com/ConnorJamesLow/texsaur/tree/main/examples/vite-project)
 
+### 🛠️ Webpack
+
+To use Texsaur with Webpack, add the following to your `webpack.config.js` and `tsconfig.json`:
+
+```js
+// webpack.config.js
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      { test: /tsx?$/, loader: 'ts-loader' },
+      // ...
+    ]
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    extensionAlias: { '.js': ['.js', '.ts'] }
+  },
+  // ...
+};
+```
+
+```jsonc
+// tsconfig.json
+"compilerOptions": {
+  "jsx": "react-jsx",
+  "jsxImportSource": "texsaur",
+  // ...
+}
+```
+
+Then use JSX as normal:
+
+```tsx
+// src/index.ts
+import { content } from './example';
+document.body.appendChild(content);
+```
+
+See [`examples/webpack-ts-project`](./examples/webpack-ts-project) for a full setup.
 
 ## 💙 Typescript Usage
 Texsaur supports a few models of JSX code generation (determined the `jsx` property in your tsconfig):
