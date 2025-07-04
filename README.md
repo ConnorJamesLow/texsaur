@@ -81,7 +81,7 @@ _However_, if your project contains a tsconfig, vite should read these propertie
 
 ### 🛠️ Webpack
 
-To use Texsaur with Webpack, add the following to your `webpack.config.js` and `tsconfig.json`:
+To use Texsaur with Webpack, use `ts-loader` and add the following to your `webpack.config.js`:
 
 ```js
 // webpack.config.js
@@ -99,23 +99,6 @@ module.exports = {
   },
   // ...
 };
-```
-
-```jsonc
-// tsconfig.json
-"compilerOptions": {
-  "jsx": "react-jsx",
-  "jsxImportSource": "texsaur",
-  // ...
-}
-```
-
-Then use JSX as normal:
-
-```tsx
-// src/index.ts
-import { content } from './example';
-document.body.appendChild(content);
 ```
 
 See [`examples/webpack-ts-project`](./examples/webpack-ts-project) for a full setup.
