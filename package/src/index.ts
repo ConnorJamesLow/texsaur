@@ -91,7 +91,7 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
         if (!child) {
             continue;
         }
-        element.append(child);
+        element.insertAdjacentHTML('beforeend', child);
     }
     return element;
 }

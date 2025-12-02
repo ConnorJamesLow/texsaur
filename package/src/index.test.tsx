@@ -75,6 +75,12 @@ describe('jsx: intrinsic element', () => {
         expect(container.children).to.have.a.lengthOf(3);
         expect(container.children[2].className).to.equal("child");
     })
+
+    it('can accept HTML entities as children', () => {
+        const innerHTML = "This &amp; that";
+        const parent = <div class="parent">{'"&amp;amp;" is an ampersand entity'}: {innerHTML} &amp; more</div>;
+        expect(parent.textContent).to.equal('"&amp;" is an ampersand entity: This & that & more');
+    });
 });
 
 describe('jsx: fragment', () => {
