@@ -81,6 +81,11 @@ describe('jsx: intrinsic element', () => {
         const parent = <div class="parent">{'"&amp;amp;" is an ampersand entity'}: {innerHTML} &amp; more</div>;
         expect(parent.textContent).to.equal('"&amp;" is an ampersand entity: This & that & more');
     });
+
+    it('uses setAttribute when the attribute name is the same as a readonly property name', () => {
+        const input = <input list="foo" /> as HTMLInputElement;
+        expect(input.getAttribute('list')).to.equal('foo');
+    })
 });
 
 describe('jsx: fragment', () => {
