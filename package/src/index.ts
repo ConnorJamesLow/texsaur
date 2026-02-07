@@ -51,6 +51,24 @@ function __jsx(tag: JSX.Tag | JSX.Component, properties: { [key: string]: any } 
                 }
                 continue;
             }
+            // Readonly getters (attribute assignment)
+            case "form":
+            case "list": {
+                element.setAttribute(prop, value);
+                continue;
+            }
+
+            // Readonly getters (property.value assignment)
+            case "controlsList":
+            case "sandbox":
+            case "sizes": {
+                (element as any)[prop].value = value;
+                continue;
+            }
+            // TODO: attributes
+
+            default:
+                break;
         }
 
         // Event callbacks:
