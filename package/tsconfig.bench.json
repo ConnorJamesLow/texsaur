@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "esnext",
+        "jsx": "react",
+        "jsxFactory": "jsx",
+        "jsxFragmentFactory": "jsx.Fragment",
+        "noEmit": true
+    },
+    "include": [
+        "bench/*.tsx",
+        "src/*.ts"
+    ]
+}

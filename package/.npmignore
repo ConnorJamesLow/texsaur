@@ -3,4 +3,5 @@ src/
 tsconfig.*
 *.test.*
 test/
+bench/
 .mocharc.json

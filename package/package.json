@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "tsc -w",
     "test": "mocha",
+    "bench": "ts-node --project tsconfig.bench.json bench/index.tsx",
     "build": "tsc",
     "prepare": "npm run build"
   },
