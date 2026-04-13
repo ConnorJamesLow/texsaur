@@ -1,6 +1,6 @@
 {
   "name": "texsaur",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Create elements with JSX.",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -10,6 +10,10 @@
       "default": "./dist/index.js"
     },
     "./jsx-runtime": {
+      "types": "./jsx-runtime/index.d.ts",
+      "default": "./jsx-runtime/index.js"
+    },
+    "./jsx-dev-runtime": {
       "types": "./jsx-runtime/index.d.ts",
       "default": "./jsx-runtime/index.js"
     }
